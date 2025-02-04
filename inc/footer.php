@@ -85,7 +85,7 @@ $(document).keypress(function(event){
             </div>
         </div>
         <div class="links">
-            <div class="powered">Copyright @ 2024 Xem Phim Online. Edit by Yansuo
+            <div class="powered">Copyright @ 2025 Xem Phim Online. Edit by Yansuo
             </div>
             <div class="link">
                 <a href="sitemap.xml">Sitemap</a>

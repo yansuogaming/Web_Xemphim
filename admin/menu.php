@@ -1,9 +1,9 @@
-<div class="br-logo"><a href="/AdminQL"><span>[</span>Admin<span>]</span></a></div>
+<div class="br-logo"><a href="/admin"><span>[</span>Admin<span>]</span></a></div>
 <div class="br-sideleft overflow-y-auto ps ps--theme_default ps--active-y"
      data-ps-id="38e997f2-8cca-66ec-1e2e-7fb777e56fb8">
     <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
     <div class="br-sideleft-menu">
-        <a href="/AdminQL" class="br-menu-link">
+        <a href="/admin" class="br-menu-link">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
                 <span class="menu-item-label">Quản lý</span>

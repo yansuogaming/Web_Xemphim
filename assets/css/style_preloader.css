@@ -1,0 +1,38 @@
+/* CSS cho preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff; /* Nền trắng hoàn toàn */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Màu xám nhạt */
+    border-top: 16px solid #3498db; /* Màu xanh */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* CSS cho header */
+#header {
+    display: block; /* Đảm bảo header hiển thị */
+    transition: opacity 0.5s ease; /* Hiệu ứng mờ dần */
+}
+/* Ẩn header khi preloader đang hiển thị */
+#header.hidden {
+    display: none; /* Ẩn header */
+}
+/* Vô hiệu hóa cuộn trang */
+body.no-scroll {
+    overflow: hidden; /* Ngăn chặn cuộn */
+}
