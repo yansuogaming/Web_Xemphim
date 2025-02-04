@@ -1,0 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+body{
+    background-color: #E8EDF2;
+}
+
+.bg-image {
+    background-image: url(https://wallpapers-clan.com/wp-content/uploads/2023/12/anime-girl-pink-eyes-city-desktop-wallpaper-preview.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.no-gutter {
+    height: 100%;
+}

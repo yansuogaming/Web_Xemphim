@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightbox Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .thumbnails {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+        }
+        .thumbnails img {
+            width: 100%;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        .large-image-container {
+            width: 65%;
+        }
+        .large-image {
+            width: 100%;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        @media (max-width: 767px) {
+            body {
+                flex-direction: column; /* Chuyển đổi hướng flex thành cột */
+                padding: 10px; /* Giảm khoảng cách padding */
+            }
+            .thumbnails {
+                width: 100%; /* Mở rộng thumbnails chiếm toàn bộ chiều rộng */
+                margin-bottom: 20px; /* Thêm khoảng cách dưới thumbnails */
+            }
+            .thumbnails img {
+                margin-bottom: 10px; /* Giữ khoảng cách giữa các hình thu nhỏ */
+            }
+            .large-image-container {
+                width: 100%; /* Mở rộng hình ảnh lớn chiếm toàn bộ chiều rộng */
+            }
+            .large-image {
+                height: auto; /* Đảm bảo hình ảnh lớn có chiều cao tự động */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="thumbnails">
+    <img src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" alt="Thumbnail 1" onclick="updateLargeImage('https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp')">
+
+    <img src="https://img.youtube.com/vi/CObYIl4TkU0/maxresdefault.jpg" alt="Video Thumbnail" onclick="updateLargeVideo('CObYIl4TkU0')"> <!-- Thumbnail video -->
+
+    <img src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="Thumbnail 2" onclick="updateLargeImage('https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D')">
+
+    <img src="https://themeisle.com/blog/wp-content/uploads/2024/06/Online-Image-Optimizer-Test-Image-JPG-Version.jpeg" alt="Thumbnail 3" onclick="updateLargeImage('https://themeisle.com/blog/wp-content/uploads/2024/06/Online-Image-Optimizer-Test-Image-JPG-Version.jpeg')">
+</div>
+
+<div class="large-image-container">
+    <a id="largeImageLink" href="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" data-lightbox="large-image" data-title="Large Image">
+        <img id="largeImage" src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" alt="Large Image" class="large-image">
+    </a>
+</div>
+
+<script>
+    function updateLargeImage(src) {
+        document.getElementById('largeImage').src = src;
+        document.getElementById('largeImageLink').href = src;
+        document.getElementById('largeImageLink').setAttribute('data-lightbox', 'large-image'); // Đặt lại lightbox cho hình ảnh
+        document.getElementById('largeImageLink').onclick = null; // Reset onclick để tránh xung đột
+    }
+
+    function updateLargeVideo(videoId) {
+        const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        const iframeHtml = `<iframe width="100%" height="400" src="${videoUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+
+        // Cập nhật liên kết để mở video
+        document.getElementById('largeImageLink').setAttribute('data-lightbox', 'iframe'); // Thiết lập lightbox cho iframe
+        document.getElementById('largeImageLink').setAttribute('data-title', 'Video'); // Tiêu đề cho lightbox
+        document.getElementById('largeImageLink').onclick = function() {
+            lightbox.start(iframeHtml); // Mở lightbox với iframe
+        };
+
+        // Hiển thị ảnh đại diện video
+        document.getElementById('largeImage').src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        document.getElementById('largeImageLink').href = `https://www.youtube.com/watch?v=${videoId}`; // Cập nhật liên kết
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
