@@ -1,41 +1,41 @@
-</div></div>
+</div>
+</div>
 <?php
 require("../inc/config.php");
 ?>
 <script>
-    	$('#gui').click(function(){
-				var mess = $('#tinhan').val();
-				if (mess == '') {
-					alert("Vui lòng đầy đủ");
-					return false;
-				}
-				$('#submit').prop('disabled', true)
-				$.post('../inc/chat.php', {
-					mess: mess,
-				}, function(data, status) {
-					$("#Chat").html(data);
-					$('#tinhan').val('');
-				});
-			}) 
-			
-$(document).keypress(function(event){
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if(keycode == '13'){
-		var mess = $('#tinhan').val();
-				if (mess == '') {
-				alert("Vui lòng đầy đủ");
-					return false;
-				}
-				$('#submit').prop('disabled', true)
-				$.post('../inc/chat.php', {
-					mess: mess,
-				}, function(data, status) {
-					$("#Chat").html(data);
-					$('#tinhan').val('');
-				});
-	}
-});
+    $('#gui').click(function() {
+        var mess = $('#tinhan').val();
+        if (mess == '') {
+            alert("Vui lòng đầy đủ");
+            return false;
+        }
+        $('#submit').prop('disabled', true)
+        $.post('../inc/chat.php', {
+            mess: mess,
+        }, function(data, status) {
+            $("#Chat").html(data);
+            $('#tinhan').val('');
+        });
+    })
 
+    $(document).keypress(function(event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            var mess = $('#tinhan').val();
+            if (mess == '') {
+                alert("Vui lòng đầy đủ");
+                return false;
+            }
+            $('#submit').prop('disabled', true)
+            $.post('../inc/chat.php', {
+                mess: mess,
+            }, function(data, status) {
+                $("#Chat").html(data);
+                $('#tinhan').val('');
+            });
+        }
+    });
 </script>
 <div id="footer">
     <div class="container">
@@ -45,17 +45,16 @@ $(document).keypress(function(event){
                     <h5>Liên kết</h5>
                     <ul style="overflow-y: scroll;list-style: none;overflow: auto;padding: 0;max-height: 148px;overflow: overlay;">
                         <?php
- $result = mysqli_query($Nhan_connect,"SELECT * FROM backlink ORDER BY id ASC");
-                if($result)
-                {
-                while($row = mysqli_fetch_assoc($result))
-                {
-				?>
-                        <li><a target="_blank" class="lienket" rel="dofollow" href="<?php echo $row["url"] ?>" title="<?php echo $row["mota"] ?>"><?php echo $row["tieude"] ?></a></li>
+                        $result = mysqli_query($Nhan_connect, "SELECT * FROM backlink ORDER BY id ASC");
+                        if ($result) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                                <li><a target="_blank" class="lienket" rel="dofollow" href="<?php echo $row["url"] ?>" title="<?php echo $row["mota"] ?>"><?php echo $row["tieude"] ?></a></li>
 
-                        	<?php
-				}}
-			?>
+                        <?php
+                            }
+                        }
+                        ?>
                     </ul>
                 </ul>
                 <!--<ul class="column-links">
@@ -80,7 +79,9 @@ $(document).keypress(function(event){
             <div class="right">
                 <ul class="column-links">
                     <h5>Liên Hệ</h5>
-                    <ul><li><!--email_off-->yansuogaming@gmail.com<!--/email_off--></li></ul>
+                    <ul>
+                        <li><!--email_off-->yansuogaming@gmail.com<!--/email_off--></li>
+                    </ul>
                 </ul>
             </div>
         </div>

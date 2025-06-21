@@ -1,3 +1,6 @@
+<?php
+require("../inc/config.php"); // Đặt ở dòng đầu tiên của file
+?>
  <div id="header">
     <div class="container">
         <div class="fixed">

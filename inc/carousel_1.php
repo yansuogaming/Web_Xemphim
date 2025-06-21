@@ -17,7 +17,7 @@
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     // Đếm số tập của phim
-                    $tap_sql = "SELECT COUNT(id) AS tap_count FROM tap WHERE link = '".$row['link']."'";
+                    $tap_sql = "SELECT COUNT(id) AS tap_count FROM tap WHERE link = '" . $row['link'] . "'";
                     $tap_result = mysqli_query($Nhan_connect, $tap_sql);
                     $tap_row = mysqli_fetch_assoc($tap_result);
                     $tap = $tap_row['tap_count'];
@@ -25,14 +25,14 @@
                     // Hiển thị dữ liệu phim
                     echo '<div class="item">
                         <div class="poster">
-                            <a title="'.htmlspecialchars($row['mota']).'" href="/phim/'.htmlspecialchars($row['link']).'">
-                                <img alt="'.htmlspecialchars($row['tenphim']).'" src="'.htmlspecialchars($row['thumbnail']).'">
+                            <a title="' . htmlspecialchars($row['mota']) . '" href="/webxemphim/phim/' . htmlspecialchars($row['link']) . '">
+                                <img alt="' . htmlspecialchars($row['tenphim']) . '" src="' . htmlspecialchars($row['thumbnail']) . '">
                             </a>
                         </div>
-                        <div class="status">Tập '.$tap.' Vietsub</div>
+                        <div class="status">Tập ' . $tap . ' Vietsub</div>
                         <div class="info">
-                            <a title="'.htmlspecialchars($row['mota']).'" href="/phim/'.htmlspecialchars($row['link']).'">'.htmlspecialchars($row['tenphim']).'</a>
-                            <dfn>'.htmlspecialchars($row['ten_loai']).'</dfn>
+                            <a title="' . htmlspecialchars($row['mota']) . '" href="/webxemphim/phim/' . htmlspecialchars($row['link']) . '">' . htmlspecialchars($row['tenphim']) . '</a>
+                            <dfn>' . htmlspecialchars($row['ten_loai']) . '</dfn>
                         </div>
                     </div>';
                 }
@@ -77,6 +77,4 @@
             }
         });
     };
-
-
 </script>

@@ -48,14 +48,14 @@ if ($resultLoaiPhim->num_rows > 0) {
                         // Hiển thị thông tin phim
                         echo '<li class="nhan-anime">
                             <div class="poster">
-                                <a title="' . htmlspecialchars($row['mota']) . '" href="/phim/' . htmlspecialchars($row['link']) . '">
+                                <a title="' . htmlspecialchars($row['mota']) . '" href="/webxemphim/phim/' . htmlspecialchars($row['link']) . '">
                                     <img alt="' . htmlspecialchars($row['tenphim']) . '" src="' . htmlspecialchars($row['thumbnail']) . '">
                                 </a>
                                 <span class="mli-eps">TẬP <i>' . $tap . '</i></span>                           
                             </div>
                             <div class="name">
                                 <h4>
-                                    <a title="' . htmlspecialchars($row['mota']) . '" href="/phim/' . htmlspecialchars($row['link']) . '">' . htmlspecialchars($row['tenphim']) . ' (' . htmlspecialchars($row['namphim']) . ')</a>
+                                    <a title="' . htmlspecialchars($row['mota']) . '" href="/webxemphim/phim/' . htmlspecialchars($row['link']) . '">' . htmlspecialchars($row['tenphim']) . ' (' . htmlspecialchars($row['namphim']) . ')</a>
                                 </h4>
                                 <dfn>' . htmlspecialchars($row['tenkhac']) . '</dfn>
                             </div>
@@ -88,14 +88,14 @@ if ($resultLoaiPhim->num_rows > 0) {
                             // Hiển thị thông tin phim
                             echo '<li class="nhan-anime">
                                 <div class="poster">
-                                    <a title="' . htmlspecialchars($row['mota']) . '" href="/phim/' . htmlspecialchars($row['link']) . '">
+                                    <a title="' . htmlspecialchars($row['mota']) . '" href="/webxemphim/phim/' . htmlspecialchars($row['link']) . '">
                                         <img alt="' . htmlspecialchars($row['tenphim']) . '" src="' . htmlspecialchars($row['thumbnail']) . '">
                                     </a>
                                     <span class="mli-eps">TẬP <i>' . $tap . '</i></span>
                                 </div>
                                 <div class="name">
                                     <h4>
-                                        <a title="' . htmlspecialchars($row['mota']) . '" href="/phim/' . htmlspecialchars($row['link']) . '">' . htmlspecialchars($row['tenphim']) . ' (' . htmlspecialchars($row['namphim']) . ')</a>
+                                        <a title="' . htmlspecialchars($row['mota']) . '" href="/webxemphim/phim/' . htmlspecialchars($row['link']) . '">' . htmlspecialchars($row['tenphim']) . ' (' . htmlspecialchars($row['namphim']) . ')</a>
                                     </h4>
                                     <dfn>' . htmlspecialchars($row['tenkhac']) . '</dfn>
                                 </div>
@@ -112,7 +112,7 @@ if ($resultLoaiPhim->num_rows > 0) {
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Ẩn tất cả nội dung tab khi trang vừa tải, trừ tab mặc định
         $('.widget .widget-body .content').addClass('hide');
         $('.widget .widget-body .content[data-name="all"]').removeClass('hide');
@@ -122,7 +122,7 @@ if ($resultLoaiPhim->num_rows > 0) {
         $('.widget .tabs .tab[data-name="all"]').addClass('active');
 
         // Bắt sự kiện click vào tab
-        $('.widget .tabs .tab').on('click', function () {
+        $('.widget .tabs .tab').on('click', function() {
             // Xóa class 'active' khỏi tất cả các tab
             $('.widget .tabs .tab').removeClass('active');
 

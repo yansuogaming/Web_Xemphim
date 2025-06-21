@@ -1,0 +1,51 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+# Redirect to HTTPS
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Block specific user agents
+RewriteCond %{HTTP_USER_AGENT} (IDM|wget|curl|ADM) [NC]
+RewriteRule .* - [F,L]
+
+# Allow direct access to sitemap.xml
+RewriteRule ^sitemap\.xml$ - [L]
+
+# Rewrite rules for friendly URLs
+RewriteRule ^$ /index.php
+RewriteRule ^test$ /pages/home.php
+RewriteRule ^phim/([^/]+)$ /pages/info.php?url_phim=$1 [L]
+RewriteRule ^danh-sach/([0-9]+)$ /pages/theloaiphim.php?theloai=$1 [L]
+RewriteRule ^the-loai/([^/]+)$ /pages/the-loai.php?theloai=$1 [L]
+RewriteRule ^tim-kiem-phim/([^/]+)$ /pages/search.php?ten=$1 [L]
+RewriteRule ^xem/([^/]+)$ /pages/xem.php?url_phim=$1 [L]
+RewriteRule ^download/([^/]+)$ /pages/download.php?url_phim=$1 [L]
+
+# Add WebP support
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.webp -f
+RewriteRule ^(.*\.(jpg|jpeg|png))$ $1.webp [T=image/webp,L]
+
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Cache-Control "max-age=86400, public"
+    <FilesMatch "\.(css)$">
+        Header set Cache-Control "max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
